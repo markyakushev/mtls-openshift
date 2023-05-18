@@ -10,7 +10,7 @@ The extended error message from the SSL handshake exception is: Extended key usa
 
 To get around this limitation, follow these steps
 
-1. Generate a new self-signed certificates
+1. Generate a new self-signed certificate
 
    ```
    openssl genrsa -out client1.key 2048
