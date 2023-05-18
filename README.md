@@ -39,13 +39,13 @@ To get around this limitation, follow these steps
    subjectAltName = @alt_names
 
    [alt_names]
-   DNS.1 = microservice.namespace.svc 
+   DNS.1 = microservice-client.mtls-test.svc 
    ```
    
 4. Create a secret containing the certificate and the key
 
    ```
-   oc create secret tls mtls-microservice-client --key="client.key" --cert="client.crt" -n namespace
+   oc create secret tls mtls-microservice-client --key="client.key" --cert="client.crt" -n mtls-test
    ```
    
 Test the certificate with the following command.
@@ -53,3 +53,5 @@ Test the certificate with the following command.
 curl --cacert /certs-ca/service-ca.crt --cert /certs/client.crt --key /certs/client.key https://microservice.namespace.svc
 ```
 The certificate expiration is set to 10 years, but, if there is a need to rotate it, re-run steps 1-4.
+
+
