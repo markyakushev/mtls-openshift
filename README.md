@@ -13,8 +13,8 @@ To get around this limitation, follow these steps
 1. Generate a new self-signed certificate
 
    ```
-   openssl genrsa -out client1.key 2048
-   openssl req -new -key client1.key -out client1.csr -days 3650 -subj "/C=US/ST=California/L=Santa Cruz/O=TechCo/OU=Cloud/CN=microservice"
+   openssl genrsa -out client.key 2048
+   openssl req -new -key client.key -out client.csr -days 3650 -subj "/C=US/ST=California/L=Santa Cruz/O=TechCo/OU=Cloud/CN=microservice"
    ```
 
 2. Get the OpenShift service-serving signing CA certificate and key
