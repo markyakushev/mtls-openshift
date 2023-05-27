@@ -47,10 +47,25 @@ To get around this limitation, follow these steps
    ```
    oc create secret tls mtls-microservice-client --key="client.key" --cert="client.crt" -n mtls-test
    ```
-   
+
+5. Create a registry pull secret
+
+   ```
+   DOCKER_REGISTRY_SERVER=docker.io
+   DOCKER_USER=Type your dockerhub username, same as when you `docker login`
+   DOCKER_EMAIL=Type your dockerhub email, same as when you `docker login`
+   DOCKER_PASSWORD=Type your dockerhub pw, same as when you `docker login`
+
+   oc create secret docker-registry pull-secret -n mtls-test \
+     --docker-server=$DOCKER_REGISTRY_SERVER \
+     --docker-username=$DOCKER_USER \
+     --docker-password=$DOCKER_PASSWORD \
+     --docker-email=$DOCKER_EMAIL
+   ```
+
 Test the certificate with the following command.
 ```
-curl --cacert /certs-ca/service-ca.crt --cert /certs/client.crt --key /certs/client.key https://microservice.namespace.svc
+curl --cacert /cert-ca/service-ca.crt --cert /cert/tls.crt --key /cert/tls.key https://microservice.mtls-test.svc.cluster.local:443
 ```
 The certificate expiration is set to 10 years, but, if there is a need to rotate it, re-run steps 1-4.
 
