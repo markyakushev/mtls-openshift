@@ -63,10 +63,24 @@ To get around this limitation, follow these steps
      --docker-email=$DOCKER_EMAIL
    ```
 
-Test the certificate with the following command.
+6. Create pods, service, and configmap
+   
+   ```
+   oc apply -f mtls-test.yaml
+   ```
+   
+7. Test the certificate with the following command.
+
+```
+oc exec -it microservice-client sh
+```
+
+then
+
 ```
 curl --cacert /cert-ca/service-ca.crt --cert /cert/tls.crt --key /cert/tls.key https://microservice.mtls-test.svc.cluster.local:443
 ```
+
 The certificate expiration is set to 10 years, but, if there is a need to rotate it, re-run steps 1-4.
 
 
