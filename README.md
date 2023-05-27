@@ -71,15 +71,15 @@ To get around this limitation, follow these steps
    
 7. Test the certificate with the following command.
 
-```
-oc exec -it microservice-client sh
-```
+   ```
+   oc exec -it microservice-client sh
+   ```
 
-then
+   then
 
-```
-curl --cacert /cert-ca/service-ca.crt --cert /cert/tls.crt --key /cert/tls.key https://microservice.mtls-test.svc.cluster.local:443
-```
+   ```
+   curl --cacert /cert-ca/service-ca.crt --cert /cert/tls.crt --key /cert/tls.key https://microservice.mtls-test.svc.cluster.local:443
+   ```
 
 The certificate expiration is set to 10 years, but, if there is a need to rotate it, re-run steps 1-4.
 
