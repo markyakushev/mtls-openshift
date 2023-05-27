@@ -4,7 +4,7 @@ OpenShift provides ability to secure communications using TSL and service-servin
 
 https://docs.openshift.com/container-platform/4.12/security/certificates/service-serving-certificate.html
 
-It is a very easy way to enable TLS without a hassle of having to generate, distribute, and manage certificates. But what if there are 2 pods and 2 services that have to use mTLS when communicating with each other. Since service serving certificates are already created and used for TLS, naturally we could try to use the same certificates as the client certificates. Not so fast, it turns out that the the certificates that OpenShift generates for services are not suitable for client authentication. 
+It is a very easy way to enable TLS without a hassle of having to generate, distribute, and manage certificates. But what if there are 2 pods and 2 services that have to use mTLS when communicating with each other. Since service serving certificates are already created and used for TLS, naturally we could try to use the same certificates as the client certificates. Not so fast, it turns out that the certificates that OpenShift generates for services are not suitable for client authentication. 
 
 ```
 The extended error message from the SSL handshake exception is: Extended key usage does not permit use for TLS client authentication
